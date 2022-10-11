@@ -9,8 +9,19 @@ class BarcaAmplada(Barca):
         self.__oberts = None
         self.__tancats = None
         self.__accions = None
+        self.__solucio=None
 
-    def actua(
-        self, percep: entorn.Percepcio
-    ) -> entorn.Accio | tuple[entorn.Accio, object]:
+    def actua(self, percep: entorn.Percepcio) -> entorn.Accio | tuple[entorn.Accio, object]:
+        inicial=Estat[percep.to_dict()]
+        OBERT=[inicial]
+        TANCAT=[]
+
+        while OBERT:
+            actual=OBERT.pop()
+            if Estat.es_meta(actual):
+                pass
+            else:
+                successor = actual.genera_fill()
+                TANCAT.append(actual)
+
         pass
